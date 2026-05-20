@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/*
+  Barber / luxury cinematic design tokens (use across all sections):
+  -- Background: #0B0B0F
+  -- Text: #FFFFFF
+  -- Accent (gold): #D4AF37
+  -- Logo type: Bebas Neue (font-barber-logo)
+  -- UI / body type: Inter (font-barber-sans)
+*/
+
+@theme {
+  --color-barber-bg: #0b0b0f;
+  --color-barber-fg: #ffffff;
+  --color-barber-accent: #d4af37;
+  --color-barber-accent-hover: #e0bd52;
+  --font-barber-logo: "Bebas Neue", ui-sans-serif, system-ui, sans-serif;
+  --font-barber-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  #gallery,
+  #reviews,
+  #booking {
+    scroll-margin-top: 5.5rem;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background-color: var(--color-barber-bg);
+    color: var(--color-barber-fg);
+    font-family: var(--font-barber-sans);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Full-width app shell — not the old Vite starter narrow column */
+  #root {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    min-height: 100dvh;
+    text-align: initial;
+    border: none;
+  }
+}
+
+@layer components {
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition:
+      opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .scroll-reveal--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}

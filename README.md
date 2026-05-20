@@ -109,14 +109,6 @@ supabase/
 └── migrate-secure-rls.sql  # RLS upgrade for existing databases
 ```
 
-## Security
-
-Safe to push to GitHub if you follow these rules:
-
-- **Never commit** `.env` — it is listed in [`.gitignore`](.gitignore). Only commit [`.env.example`](.env.example) with placeholders.
-- The **anon key** is embedded in the browser bundle after build; that is expected for Supabase client apps.
-- **RLS** restricts anonymous reads to `id`, `starts_at`, and `ends_at` so client emails and phone numbers are not exposed via the public API.
-- Inserts are validated in the database (email format, booking window, service limits).
 
 ## Deployment
 
